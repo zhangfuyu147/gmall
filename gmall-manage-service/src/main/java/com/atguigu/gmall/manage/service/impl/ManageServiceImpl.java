@@ -122,6 +122,34 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    public SkuInfo getSkuInfo(String skuId) {
+        //根据skuID获取skuInfo
+        SkuInfo skuInfo = skuInfoMapper.selectByPrimaryKey(skuId);
+        //根据skuID查询到skuImage集合
+        SkuImage skuImage = new SkuImage();
+        skuImage.setSkuId(skuId);
+        List<SkuImage> skuImageList = skuImageMapper.select(skuImage);
+        //将图片集合添加入skuInfo中
+        skuInfo.setSkuImageList(skuImageList);
+
+        return skuInfo;
+    }
+
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo) {
+
+       return spuSaleAttrMapper.selectSpuSaleAttrListCheckBySku(skuInfo.getId(),skuInfo.getSpuId());
+
+    }
+
+    @Override
+    public List<SkuSaleAttrValue> getSkuSaleAttrValueListBySpu(String spuId) {
+        List<SkuSaleAttrValue> skuSaleAttrValueList  = skuSaleAttrValueMapper.selectSkuSaleAttrValueListBySpu(spuId);
+
+        return skuSaleAttrValueList;
+    }
+
+    @Override
     public List<BaseAttrInfo> getAttrInfoList(BaseAttrInfo baseAttrInfo) {
         return baseAttrInfoMapper.select(baseAttrInfo);
     }
@@ -191,6 +219,7 @@ public class ManageServiceImpl implements ManageService {
     public List<BaseSaleAttr> getBaseSaleAttrList() {
         return baseSaleAttrMapper.selectAll();
     }
+
     @Override
     @Transactional
     public void saveSpuInfo(SpuInfo spuInfo) {

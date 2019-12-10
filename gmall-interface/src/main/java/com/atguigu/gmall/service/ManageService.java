@@ -116,4 +116,25 @@ public interface ManageService {
      * @param skuInfo
      */
     void saveSkuInfo(SkuInfo skuInfo);
+
+    /**
+     *
+     * @param skuId
+     * @return
+     */
+    SkuInfo getSkuInfo(String skuId);
+
+    /**
+     *
+     * @param skuInfo
+     * @return
+     */
+    List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo);
+
+    /**
+     *
+     * @param spuId
+     * @return
+     */
+    List<SkuSaleAttrValue> getSkuSaleAttrValueListBySpu(String spuId);
 }
