@@ -118,21 +118,21 @@ public interface ManageService {
     void saveSkuInfo(SkuInfo skuInfo);
 
     /**
-     *
+     *根据skuID获取skuInfo
      * @param skuId
      * @return
      */
     SkuInfo getSkuInfo(String skuId);
 
     /**
-     *
+     通过spuId ，skuId 查询销售属性集合
      * @param skuInfo
      * @return
      */
     List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo);
 
     /**
-     *
+     *通过spuId 查询sku与销售属性中间表集合
      * @param spuId
      * @return
      */
