@@ -250,6 +250,10 @@ public class ManageServiceImpl implements ManageService {
         List<SkuImage> skuImageList = skuImageMapper.select(skuImage);
         //将图片集合添加入skuInfo中
         skuInfo.setSkuImageList(skuImageList);
+        //添加平台属性值集合
+        SkuAttrValue skuAttrValue = new SkuAttrValue();
+        skuAttrValue.setSkuId(skuId);
+        skuInfo.setSkuAttrValueList(skuAttrValueMapper.select(skuAttrValue));
 
         return skuInfo;
     }
