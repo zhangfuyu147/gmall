@@ -70,12 +70,9 @@
             筛选条件	    
         </div>
 		<i><img src="/image/right-@1x.png" alt=""></i>
-        <span  >&quot;小米&quot;</span>
-		<a class="select-attr"     href="#"     > 2G<b> ✖ </b>
+        <span th:if="${keyword} != null" th:text="'&quot;'+${keyword}+'&quot;'" >&quot;小米&quot;</span>
+		<a class="select-attr" th:href="'list.html' + ${baseAttrValue.urlParam}" th:each="baseAttrValue:${baseAttrValueArrayList}" th:text="${baseAttrValue.valueName} +'✖'" > 2G<b> ✖ </b>
 		</a>
-		 <a class="select-attr"   href="#"      > 屏幕尺寸:5.1-5.5英寸<b> ✖ </b>
-		</a>
-
     </div>
 </div>
  
@@ -90,26 +87,16 @@
             </div>
             <div class="GM_nav_logo">
 
-                <div class="GM_pre"  >
+                <div class="GM_pre" th:each="baseAttrInfo:${baseAttrInfoList}" >
                     <div class="sl_key">
-                        <span  >属性1111：</span>
+                        <span th:text="${baseAttrInfo.attrName}" >属性1111：</span>
                     </div>
                     <div class="sl_value">
                         <ul>
-                            <li  ><a  href="#"  >属性值111</a></li>
-							<li  ><a  href="#"  >属性值222</a></li>
+                            <li th:each="attrValue:${baseAttrInfo.attrValueList}" >
+                                <a th:href="'list.html?'+${urlParam}+'&valueId='+${attrValue.id}" th:text="${attrValue.valueName}"  >属性值111</a>
+                            </li>
 						  </ul>
-                    </div>
-                </div>
-				 <div class="GM_pre"  >
-                    <div class="sl_key">
-                        <span  >属性222：</span>
-                    </div>
-                    <div class="sl_value">
-                        <ul>
-                             <li  ><a href="#"   >属性值333</a></li>
-							<li  ><a href="#"  >属性值444</a></li>
-							</ul>
                     </div>
                 </div>
             </div>
@@ -207,18 +194,18 @@
 
                     <!--排序内容-->
                     <div class="rig_tab" style="width:940px">
-                      <div style="width:215px"   >
+                      <div style="width:215px" th:each="skuLsInfo:${skuLsInfoList}"  >
                             <p class="da">
-                                <a href="#"  onclick="javascript:item('1')">
-                                    <img     src="img/57d0d400Nfd249af4.jpg" class="dim">
+                                <a href="#" th:onclick="item([[${skuLsInfo.id}]]);">
+                                    <img  th:src="${skuLsInfo.skuDefaultImg}"   src="img/57d0d400Nfd249af4.jpg" class="dim">
                                 </a>
                             </p>
 
                             <p class="tab_R">
-                                <span >¥5199.00</span>
+                                <span th:text="'￥'+${skuLsInfo.price}">¥5199.00</span>
                             </p>
 
-                                <a href="#" title=""  onclick="javascript:item('1')"  class="tab_JE"  >
+                                <a href="#" title=""  th:onclick="item([[${skuLsInfo.id}]]);" class="tab_JE" th:utext="${skuLsInfo.skuName}" >
                                     Apple iPhone 7 Plus (A1661) 32G 黑色 移动联通电信4G手机
                                 </a>
                         </div>

@@ -49,12 +49,19 @@ public interface UserInfoService {
      * @param userAddress
      * @return
      */
-//    List<UserAddress> findUserAddressListByUserId(UserAddress userAddress);
+    List<UserAddress> findUserAddressListByUserId(UserAddress userAddress);
 
+    /**
+     * 用户登录
+     * @param userInfo
+     * @return
+     */
+    UserInfo login(UserInfo userInfo);
 
-
-
-
-
-
+    /**
+     * 用户认证
+     * @param userId
+     * @return
+     */
+    UserInfo verify(String userId);
 }

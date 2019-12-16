@@ -18,4 +18,10 @@ public interface ListService {
      * @return
      */
     SkuLsResult search(SkuLsParams skuLsParams);
+
+    /**
+     * 更新热度评分
+     * @param skuId
+     */
+    public void incrHotScore(String skuId);
 }
