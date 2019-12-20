@@ -47,12 +47,15 @@
 						<li>
 							<img src="/img/user_06.png" class="err_img2"/>
 							<input type="password" name="passwd" placeholder=" 密码" class="password"/>
-
 						</li>
 						<li class="bri">
 							<a href="">忘记密码</a>
 						</li>
-						<li class="ent"><button id="btn2" type="button" class="btn2"><a class="a">登 &nbsp; &nbsp;录</a></button></li>
+						<li class="ent">
+							<button id="btn2" type="button" class="btn2">
+								<a class="a">登 &nbsp; &nbsp;录</a>
+							</button>
+						</li>
 
 					</ul>
 						<input type="hidden" id="originUrl" name="originUrl" th:value="${originUrl}"/>
@@ -100,7 +103,7 @@
                             var originUrl = $("#originUrl").val();
                             console.log("originUrl:"+originUrl);
                             if(originUrl==''){
-                                window.location.href="http://www.gmall.com/"
+                                window.location.href="http://item.gmall.com/36.html"
 								return ;
                             }
                               originUrl = decodeURIComponent(originUrl);

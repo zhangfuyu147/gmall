@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.gmall.cart.mapper.CartInfoMapper">
+    <resultMap id="CartInfoMap" type="com.atguigu.gmall.bean.CartInfo" autoMapping="true">
+        <result property="id" column="id" ></result>
+        <result property="skuPrice" column="price" ></result>
+    </resultMap>
+    <select id="selectCartListWithCurPrice" resultMap="CartInfoMap">
+        SELECT ci.*, if(si.price is NULL ,ci.cart_price,si.price) price
+        FROM cart_info  ci LEFT JOIN sku_info si ON  si.id=ci.sku_id WHERE ci.user_id=#{0}
+        ORDER BY ci.id DESC ;
+    </select>
+</mapper>
